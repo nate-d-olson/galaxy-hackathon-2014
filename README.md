@@ -82,11 +82,7 @@ sudo docker build .
 ```
 bash sudo docker commit CONTAINER ubuntu:baysic
 ```
-		
 
-
-
-# Not sure I did this is this part of Johns pull request?
 Create `job_conf.xml` and add
 
 ```bash

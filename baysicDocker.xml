@@ -1,0 +1,28 @@
+<tool id="baysic_snp" name="Combine variant calls sets with BAYSIC">
+    <description>Posterior variant calls</description>
+    <requirements>
+      <container type="docker">ubuntu:baysic</container>
+    </requirements>
+    <command>
+                perl /baysic/baysic.pl \
+                        --statsOutFile "${out_file1}" \
+                        --pvalCutoff 0.8 \
+						#for $input_vcf in $input_vcfs:
+							--vcf "${input_vcf.input_vcf}"
+						#end for
+                        --countsOutFile ${out_file2} \
+                        --vcfOutFile ${out_file3}
+    </command>
+        <inputs>
+		    <repeat name="input_vcfs" title="Select VCF dataset" min="5" >
+		      <param name="input_vcf" type="data" format="vcf" label="Dataset"/>
+		  	</repeat>
+        </inputs>
+	<outputs>
+			<data format="txt" name="out_file1" />
+			<data format="txt" name="out_file2" />
+			<data format="vcf" name="out_file3" />
+    </outputs>
+    <help>
+    </help>
+</tool>
